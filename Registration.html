@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: Palatino Linotype;
+        }
+
+        body {
+            background-color: rgba(0, 0, 0, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 130vh;
+        }
+
+        #main-box {
+            width: 600px;
+            border: 2px solid rgb(158, 134, 158);
+            padding: 50px 100px;
+            border-radius: 10px;
+        }
+
+        #reg-title {
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        #fname,
+        #sname,
+        #email,
+        #number,
+        #pasword,
+        #cpasword {
+            width: 400px;
+            /* width: 100%; */
+            height: 30px;
+            padding-left: 10px;
+            margin-top: 6px;
+            /* margin-bottom: 3px; */
+            border: none;
+            letter-spacing: 2px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            /* display: none; */
+            /* position: absolute; */
+        }
+
+        label {
+            color: white;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        #remember {
+            width: 10px;
+            height: 10px;
+            padding-left: 10px;
+            /* margin-top: 6px; */
+            border: 3px solid rgb(56, 23, 23);
+            letter-spacing: 2px;
+        }
+
+        #captch-box {
+            width: 400px;
+            height: 30px;
+            /* border:white; */
+            border: 1px solid rgb(99, 99, 97);
+            color: white;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #encaptch{
+            width: 360px;
+            height: 33px;
+            font-size: 14px;
+            font-weight: bolder;
+            margin-bottom: 6px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: none;
+            letter-spacing: 2px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+        }
+
+        #refresh {
+            font-size: 35px;        }
+
+        #remlabel {
+            font-size: 14px;
+            color: white;
+        }
+
+        #login1 {
+            font-size: 16px;
+            font-weight: bolder;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        #logremember{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 350px;
+            height: 30px;
+            margin-bottom: 20px;
+        }
+
+        #sign-btn {
+            padding: 5px 15px;
+            background-color: rgb(19, 20, 73);
+            color: white;
+            font-size: 16px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-left: 40%;
+        }
+
+        #mfname,
+        #msname,
+        #memail,
+        #mtel,
+        #mpass,
+        #mcpass,
+        #mencaptch {
+            width: 400px;
+            height: 30px;
+            padding-left: 10px;
+            border: none;
+            letter-spacing: 2px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            color: red;
+            font-size: 14px;
+            float: left;
+        }
+
+        #number::before {
+            content: "+91 ";
+        }
+    </style>
+</head>
+
+<body onload="captcha()">
+
+    <form id="main-box">
+        <div id="reg-title">Registration</div>
+
+        <label for="fname">Enter your first name</label><br />
+        <input type="text" name="fname" id="fname" placeholder="Enter your first name" onmouseover="slider1()">
+        <div id="mfname"></div><br /><br />
+
+        <label for="sname">Enter your second name</label><br />
+        <input type="text" name="sname" id="sname" placeholder="Enter your second name" onmouseover="slider2()">
+        <div id="msname"></div><br /><br />
+
+        <label for="email">Enter your email</label><br />
+        <input type="email" name="email" id="email" placeholder="Enter your email" onmouseover="slider3()">
+        <div id="memail"></div><br /><br />
+
+        <label for="number">Enter your Number</label><br />
+        <input type="tel" name="number" id="number" placeholder="Enter your Number" onmouseover="slider4()">
+        <div id="mtel"></div><br /><br />
+
+        <label for="pasword">Enter your pasword</label><br />
+        <input type="password" name="pasword" id="pasword" placeholder="Enter your Number" onmouseover="slider5()">
+        <div id="mpass"></div><br /><br />
+
+        <label for="cpasword">Enter your confirm pasword</label><br />
+        <input type="password" name="cpasword" id="cpasword" placeholder="Enter your confirm pasword"
+            onmouseover="slider6()">
+        <div id="mcpass"></div><br /><br />
+
+        <div id="captch-box"></div>
+        <input type="text" name="enter-captcha" id="encaptch" placeholder="Enter the captcha that show UP"
+            onmouseover="slider7()">&nbsp;&nbsp;
+        <label for="refresh" onclick="captcha()"><i class="fa-solid fa-arrows-rotate"></i></label>
+        <div id="mencaptch"></div><br /><br />
+
+        <div id="logremember">
+            <div for="remember" id="remlabel">
+                <input type="radio" name="remember" id="remember">&nbsp;&nbsp;
+                <label for="remember">Remember Me</label>
+            </div>
+            <label id="login1" onclick="log()">Login</label>
+        </div>
+
+        <button onclick="return signup()" id="sign-btn">Sign</button>
+    </form>
+
+    <script src="Registration.js"></script>
+</body>
+
+</html>
